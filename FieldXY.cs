@@ -13,6 +13,7 @@ namespace Conway_s_Game_of_Life
         public int x { get; private set; }
         public int y { get; private set; }
 
+
         public FieldXY(int value)
         {
            this.x = value;
@@ -26,22 +27,41 @@ namespace Conway_s_Game_of_Life
     {
         private static Random random = new Random();
 
+        char[,] field;
 
-        public CreateField(int value = 20)
+
+        public CreateField(int value)
             : base(value)
         {
+            ToFillField();
             DrawField();
         }
 
-        private void DrawField()
+        private void ToFillField()
         {
+            field = new char[this.x, this.y];
+
             foreach (int i in Enumerable.Range(0, this.y))
             {            
                 foreach (int j in Enumerable.Range(0, this.x))
                 {
-                    char randomChar = random.Next(2) == 0 ? '#' : '.';
+                    field[j, i] = random.Next(2) == 0 ? '#' : '.';
+                }
+                
+            }
+            Console.WriteLine();
+        }
 
-                    Console.Write(randomChar);
+        private void DrawField()
+        {
+            int x = field.GetLength(0);
+            int y = field.GetLength(1);
+
+            foreach (int i in Enumerable.Range(0, y))
+            {
+                foreach (int j in Enumerable.Range(0, y))
+                {
+                    Console.Write(field[i, j]);
                 }
                 Console.WriteLine();
             }
