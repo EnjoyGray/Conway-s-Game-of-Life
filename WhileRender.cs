@@ -9,13 +9,15 @@ namespace Conway_s_Game_of_Life
 {
     internal class WhileRender
     {
-        public WhileRender(int size = 20) // default 20
-        {
+        int count = 1;
+        public WhileRender(int x = 20, int y = 20)
+        {           
             while (true)
             {
-                Console.WriteLine("");
-                CreateField draw = new CreateField(size);
+                Console.WriteLine(count++);
+                FieldXY myRun = new FieldXY(x, y);
                 Console.ReadKey();
+                
             }
             
         }

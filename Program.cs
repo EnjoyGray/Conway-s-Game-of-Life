@@ -7,20 +7,10 @@ using System.Threading.Tasks;
 namespace Conway_s_Game_of_Life
 {
     class Program
-    {
+    {        
         static void Main(string[] args)
-        {
-            
-            WhileRender render = new WhileRender(); // default 20
-
-
-            
-        }
-
-
-        
-     
+        {           
+            WhileRender render = new WhileRender(); // default 20            
+        }      
     }
-
-    
 }

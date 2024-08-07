@@ -1,75 +1,117 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Conway_s_Game_of_Life
-{ 
+{
 
-    class FieldXY
+    internal class FieldXY
     {
+        int x;
+        int y;
 
-        public int x { get; private set; }
-        public int y { get; private set; }
+        char[,] myMatrix;
+        int[,] myMLifeValue;
+
+        int maxValueLifeRange = 3; //default 1-2
+
+        char life = '#';
+        char dead = '.';
+
+        Random random = new Random();
 
 
-        public FieldXY(int value)
+        public FieldXY(int x = 10, int y = 10) //default 10x10
         {
-           this.x = value;
-           this.y = value;
+            myMatrix = new char[x, y];
+            myMLifeValue = new int[x, y];
+
+            this.x = x;
+            this.y = y;
+
+            CreateMatrix();
+            //DrawMatrix(myMatrix);
+            //DrawMatrix(myMLifeValue);
+
+
+            CheckLife();
+            //CheckNeighbors();
+            DrawMatrix(myMatrix);
+            //DrawMatrix(myMLifeValue);
 
         }
-                
-    }
-
-    class CreateField : FieldXY
-    {
-        private static Random random = new Random();
-
-        char[,] field;
 
 
-        public CreateField(int value)
-            : base(value)
+        private void CreateMatrix()
         {
-            ToFillField();
-            DrawField();
-        }
-
-        private void ToFillField()
-        {
-            field = new char[this.x, this.y];
-
-            foreach (int i in Enumerable.Range(0, this.y))
-            {            
-                foreach (int j in Enumerable.Range(0, this.x))
+            for (int i = 0; i < y; i++)
+            {
+                for (int j = 0; j < x; j++)
                 {
-                    field[j, i] = random.Next(2) == 0 ? '#' : '.';
+                    int myRandom = random.Next(2);
+
+                    myMatrix[j, i] = myRandom == 0 ? life : dead;
+                    myMLifeValue[j, i] = myRandom == 0 ? random.Next(1, maxValueLifeRange) : 0;                                   
                 }
-                
+            }
+        }
+
+        private void CheckLife()
+        {
+            for (int i = 0; i < y; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {                 
+                    //myMLifeValue[j, i] = myMLifeValue[j, i] <= 1 ? 0 : --myMLifeValue[j, i];
+                    //myMatrix[j, i] = myMLifeValue[j, i] <= 1 ? dead : life; // щось не так !!!
+
+                    if (myMLifeValue[j, i] <= 1)
+                    {
+                        myMLifeValue[j, i] = 0;
+                        myMatrix[j, i] = dead;
+                    }
+                    else
+                    {
+                        myMLifeValue[j, i] = --myMLifeValue[j, i];
+                        myMatrix[j, i] = life;
+                    }
+                }
+                //Console.WriteLine();
+
+            }
+        }
+
+        private void DrawMatrix<T>(T[,] name) // використовую T - як "<T>(T[,] name)" як унвіерсальний метод
+        {
+            for (int i = 0; i < y; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {
+                    Console.Write(name[j, i]);
+                }
+                Console.WriteLine();
             }
             Console.WriteLine();
         }
 
-        private void DrawField()
+        private void CheckNeighbors()
         {
-            int x = field.GetLength(0);
-            int y = field.GetLength(1);
 
-            foreach (int i in Enumerable.Range(0, y))
+
+            for (int i = 0; i < y; i++)
             {
-                foreach (int j in Enumerable.Range(0, y))
+                for (int j = 0; j < x; j++)
                 {
-                    Console.Write(field[i, j]);
+
                 }
-                Console.WriteLine();
             }
+
+
         }
     }
-
-    
-    
 }
 
 
