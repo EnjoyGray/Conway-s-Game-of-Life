@@ -10,7 +10,8 @@ namespace Conway_s_Game_of_Life
     {        
         static void Main(string[] args)
         {           
-            WhileRender render = new WhileRender(); // default 20            
+            WhileRender render = new WhileRender(); // default 20
+            render.Run();                                       
         }      
     }
 }
