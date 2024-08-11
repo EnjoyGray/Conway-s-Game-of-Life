@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Conway_s_Game_of_Life
+﻿namespace Conway_s_Game_of_Life.Models
 {
     internal class Cell
     {
@@ -40,6 +34,6 @@ namespace Conway_s_Game_of_Life
         public Cell(int Index)
         {
             index = Index;
-        }        
+        }
     }
 }

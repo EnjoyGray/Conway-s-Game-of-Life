@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Conway_s_Game_of_Life.Interfaces;
+using Conway_s_Game_of_Life.Models;
 
 namespace Conway_s_Game_of_Life
 {
     class RunGame
-    {        
+    {
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            
-            IGame game = new IGame();
+
+            IGame game = new GameImplementation();
             game.Run();
         }
-        
     }
 }
