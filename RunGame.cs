@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Conway_s_Game_of_Life
 {
-    class Program
+    class RunGame
     {        
         static void Main(string[] args)
-        {           
-            WhileRender render = new WhileRender(); // default 20
-            render.Run();                                       
-        }      
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+            
+            IGame game = new IGame();
+            game.Run();
+        }
+        
     }
 }

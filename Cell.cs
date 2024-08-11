@@ -16,7 +16,7 @@ namespace Conway_s_Game_of_Life
         public int Index
         {
             get { return index; }
-            private set
+            set
             {
                 if (value < 0 || value >= hp.Length)
                 {
