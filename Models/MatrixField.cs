@@ -25,7 +25,7 @@ namespace Conway_s_Game_of_Life.Models
             {
                 for (int j = 0; j < x; j++)
                 {
-                    int cellVarRandom = random.Next(3, 5);
+                    int cellVarRandom = random.Next(1, 2);
 
                     Cell cell = new Cell(cellVarRandom);
 
@@ -45,7 +45,7 @@ namespace Conway_s_Game_of_Life.Models
                     Cell currentCell = Matrix[j, i];
                     if (currentCell != cellDead)
                     {
-                        if (currentCell.Hp > 1)
+                        if (currentCell.Index > 1)
                         {
                             currentCell.Index--;
                         }
@@ -98,7 +98,7 @@ namespace Conway_s_Game_of_Life.Models
                     {
                         if (liveNeighbors == 3)
                         {
-                            int cellVarRandom = random.Next(3, 5);
+                            int cellVarRandom = random.Next(1, 2);
                             Cell cell = new Cell(cellVarRandom);
 
                             updatedMatrix[j, i] = cell;
