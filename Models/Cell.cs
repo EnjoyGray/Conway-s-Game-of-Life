@@ -3,7 +3,7 @@
     internal class Cell
     {
         int[] hp = { 0, 1, 2, 3, 4 };
-        string[] visual = { "•", "▫", "▪", "□", "■" };
+        string[] visual = { " ", "#", "%", "@", "$" };
 
         int index;
 

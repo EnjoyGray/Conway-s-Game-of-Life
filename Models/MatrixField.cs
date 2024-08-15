@@ -25,9 +25,12 @@ namespace Conway_s_Game_of_Life.Models
             {
                 for (int j = 0; j < x; j++)
                 {
-                    int cellVarRandom = random.Next(4, 5);
+                    int cellVarRandom = random.Next(3, 5);
+
                     Cell cell = new Cell(cellVarRandom);
+
                     var lifeOrDeadRandom = random.Next(2);
+
                     Matrix[j, i] = lifeOrDeadRandom == 0 ? cellDead : cell;
                 }
             }
@@ -61,7 +64,8 @@ namespace Conway_s_Game_of_Life.Models
             {
                 for (int j = 0; j < x; j++)
                 {
-                    Console.Write(Matrix[j, i].Visual);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write(Matrix[j, i].Visual);                    
                 }
                 Console.WriteLine();
             }
@@ -76,11 +80,28 @@ namespace Conway_s_Game_of_Life.Models
                 for (int j = 0; j < x; j++)
                 {
                     int liveNeighbors = CountLiveNeighbors(j, i);
+                    
                     if (Matrix[j, i] != cellDead)
                     {
-                        if (liveNeighbors <= 1 || liveNeighbors >= 4)
+                        if (liveNeighbors < 2 || liveNeighbors > 3) // 1 і 3 правило
                         {
                             updatedMatrix[j, i] = cellDead;
+                        }
+                        
+                        else if (liveNeighbors == 2 || liveNeighbors == 3) // 2 правило
+                        {
+                            updatedMatrix[j, i] = Matrix[j, i];
+                        }
+                    }                    
+
+                    else if (Matrix[j, i] == cellDead) // 4 правило
+                    {
+                        if (liveNeighbors == 3)
+                        {
+                            int cellVarRandom = random.Next(3, 5);
+                            Cell cell = new Cell(cellVarRandom);
+
+                            updatedMatrix[j, i] = cell;
                         }
                     }
                 }
