@@ -25,7 +25,7 @@ namespace Conway_s_Game_of_Life.Models
             {
                 for (int j = 0; j < x; j++)
                 {
-                    int cellVarRandom = random.Next(0, 5);
+                    int cellVarRandom = random.Next(4, 5);
                     Cell cell = new Cell(cellVarRandom);
                     var lifeOrDeadRandom = random.Next(2);
                     Matrix[j, i] = lifeOrDeadRandom == 0 ? cellDead : cell;

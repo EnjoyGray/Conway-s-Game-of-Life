@@ -2,13 +2,13 @@
 
 namespace Conway_s_Game_of_Life.Models
 {
-    internal class GameImplementation : IGame
+    internal class Game : IGame
     {
         int count = 1;
         int _x;
         int _y;
 
-        public GameImplementation(int x = 20, int y = 20)
+        public Game(int x = 20, int y = 20)
         {
             _x = x;
             _y = y;
@@ -24,7 +24,8 @@ namespace Conway_s_Game_of_Life.Models
                 myRun.CheckNeighbors();                
                 myRun.DrawMatrix();
 
-                Console.ReadKey();
+                //Console.ReadKey();
+                Thread.Sleep(500);
                 Console.Clear();
             }
         }
