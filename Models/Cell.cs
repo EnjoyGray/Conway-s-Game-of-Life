@@ -10,25 +10,52 @@
             _hp = hp;
             _visual = visual;
         }
-    }
 
+        public abstract void Draw();
+    }
 
 
     internal class CellLight : Cell
     {
-        CellLight() 
-            : base(2, "@")
+        public CellLight() 
+            : base(1, "L")
         {
         
         }
+
+
+        public override void Draw()
+        {
+            Console.Write(_hp);
+        }
+
     }
 
-    internal class CellMidle : Cell
+    internal class CellMedium : Cell
     {
+        public CellMedium()
+            : base(2, "M")
+        {
+
+        }
+        public override void Draw()
+        {
+            Console.Write(_hp);
+        }
     }
 
     internal class CellHeavy : Cell
     {
-    }
+        public CellHeavy()
+            : base(3, "H")
+        {
+
+        }
+        public override void Draw()
+        {
+            Console.Write(_hp);
+        }
+        
+    }    
 }
 
