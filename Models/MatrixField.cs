@@ -13,7 +13,9 @@ namespace Conway_s_Game_of_Life.Models
         public MatrixField(int X, int Y)
         {
             x = X;
-            y = Y;            
+            y = Y;
+
+            Matrix = new Cell[x, y];
         }
 
         private Cell CreateCell(int number)
@@ -62,33 +64,7 @@ namespace Conway_s_Game_of_Life.Models
                     Matrix[j, i] = result;
                 }
             }
-        }
-
-
-        //public void CheckLife()
-        //{
-        //    for (int i = 0; i < y; i++)
-        //    {
-        //        for (int j = 0; j < x; j++)
-        //        {                           
-        //            Cell currentCell = Matrix[j, i];
-        //            Cell cellDead = currentCell;
-        //            cellDead._hp = 0;
-        //
-        //            if (currentCell != cellDead)
-        //            {
-        //                if (currentCell._hp > 1)
-        //                {
-        //                    --currentCell._hp;
-        //                }
-        //                else
-        //                {
-        //                    Matrix[j, i] = cellDead;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        }       
 
         public void DrawMatrix()
         {

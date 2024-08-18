@@ -27,8 +27,8 @@ namespace Conway_s_Game_of_Life.Models
                 matrixField.DrawMatrix();
                 Console.ResetColor();
 
-                Console.ReadKey();
-                //Thread.Sleep(500);
+                //Console.ReadKey();
+                Thread.Sleep(250);
                 Console.Clear();
             }
         }
