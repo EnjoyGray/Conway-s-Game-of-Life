@@ -26,7 +26,18 @@
 
         public override void Draw()
         {
-            Console.Write(_hp);
+            switch (_hp) 
+            {   case 0:
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write(_visual);
+                    break;
+
+                case 1:
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.Write(_visual);
+                    break;
+            }
+            Console.ResetColor();
         }
 
     }
@@ -40,7 +51,24 @@
         }
         public override void Draw()
         {
-            Console.Write(_hp);
+            switch (_hp)
+            {
+                case 0:
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write(_visual);
+                    break;
+
+                case 1:
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.Write(_visual);
+                    break;
+
+                case 2:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.Write(_visual);
+                    break;
+            }
+            Console.ResetColor();
         }
     }
 
@@ -53,9 +81,32 @@
         }
         public override void Draw()
         {
-            Console.Write(_hp);
+            switch (_hp)
+            {
+                case 0:
+                    Console.BackgroundColor = ConsoleColor.Black;                    
+                    Console.Write(_visual);
+                    
+                    break;
+
+                case 1:
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.Write(_visual);                    
+                    break;
+
+                case 2:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.Write(_visual);                    
+                    break;
+
+                case 3:
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.Write(_visual);
+                    break;
+            }
+            Console.ResetColor();
         }
-        
+
     }    
 }
 
