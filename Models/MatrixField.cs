@@ -7,24 +7,31 @@ namespace Conway_s_Game_of_Life.Models
     {
         int x;
         int y;
-        Cell[,] Matrix;
-        Cell cellDead;
-        List<Cell> cells = new List<Cell>();
+        Cell[,] Matrix;              
         Random random = new Random();
 
         public MatrixField(int X, int Y)
         {
             x = X;
-            y = Y;
-            Matrix = new Cell[x, y];
-                        
-            Cell cellLight = new CellLight();
-            Cell cellMedium = new CellMedium();
-            Cell cellHeavy = new CellHeavy();
+            y = Y;            
+        }
 
-            cells.Add(cellLight);
-            cells.Add(cellMedium);
-            cells.Add(cellHeavy);
+        private Cell CreateCell(int number)
+        {
+            switch (number)
+            {
+                case 0:
+                    return new CellLight();
+
+                case 1:
+                    return new CellMedium();
+
+                case 2:
+                    return new CellHeavy();
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(number), "Invalid cell type");
+            }
         }
 
         public void CreateMatrix()
@@ -38,11 +45,9 @@ namespace Conway_s_Game_of_Life.Models
                     Cell result;
                     int cellVarRandom = random.Next(3);
 
-                    Cell cell = cells[cellVarRandom];                    
+                    Cell cell = CreateCell(cellVarRandom);                    
 
                     var CellLifeOrDeadRandom = random.Next(2);
-
-                    //Matrix[j, i] = cell; 
 
                     if (CellLifeOrDeadRandom == 0)
                     {
@@ -90,58 +95,27 @@ namespace Conway_s_Game_of_Life.Models
             for (int i = 0; i < y; i++)
             {
                 for (int j = 0; j < x; j++)
-                {
-                    //Console.BackgroundColor = ConsoleColor.Black;                  
-
-                    //if (Matrix[j, i]._hp == 0)
-                    //{
-                    //    Console.BackgroundColor = ConsoleColor.Black;
-                    //    Console.ForegroundColor = ConsoleColor.Black;
-                    //    Console.Write(Matrix[j, i]._visual);                        
-                    //}
-                    //else if (Matrix[j, i]._hp == 1)
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Green;
-                    //    Console.Write(Matrix[j, i]._visual);                        
-                    //}
-                    //else if (Matrix[j, i]._hp == 2)
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Yellow;
-                    //    Console.Write(Matrix[j, i]._visual);
-                    //}
-                    //else if (Matrix[j, i]._hp == 3)
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Red;
-                    //    Console.Write(Matrix[j, i]._visual);
-                    //}
-
-
-                    //Console.Write(Matrix[j, i].Draw);
+                {                    
                     Matrix[j, i].Draw();
-                }
-                
-                Console.ResetColor();
+                }                
                 Console.WriteLine();
             }
         }
 
-            public void CheckNeighbors()
+        public void CheckNeighbors()
         {
             Cell[,] updatedMatrix = (Cell[,])Matrix.Clone();
             for (int i = 0; i < y; i++)
             {
                 for (int j = 0; j < x; j++)
                 {
-                    int liveNeighbors = CountLiveNeighbors(j, i);
-                                        
-                    Cell cellDead = updatedMatrix[j, i];
-                    cellDead._hp = 0;
+                    int liveNeighbors = CountLiveNeighbors(j, i);                                         
 
-                    if (Matrix[j, i] != cellDead)
+                    if (Matrix[j, i]._hp != 0)
                     {
                         if (liveNeighbors < 2 || liveNeighbors > 3) // 1 і 3 правило
                         {
-                            updatedMatrix[j, i] = cellDead;
+                            updatedMatrix[j, i]._hp--;
                         }
                         
                         else if (liveNeighbors == 2 || liveNeighbors == 3) // 2 правило
@@ -150,7 +124,7 @@ namespace Conway_s_Game_of_Life.Models
                         }
                     }                    
 
-                    else if (Matrix[j, i] == cellDead) // 4 правило
+                    else if (Matrix[j, i]._hp == 0) // 4 правило
                     {
                         if (liveNeighbors == 3)
                         {
