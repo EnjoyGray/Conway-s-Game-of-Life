@@ -88,8 +88,7 @@
                 case 0:
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(_visual);
-                    
+                    Console.Write(_visual);                    
                     break;
 
                 case 1:
@@ -106,6 +105,20 @@
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.Write(_visual);
                     break;
+
+
+                default:
+                    if (_hp > 3)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                    }
+                    else if (_hp < 0)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }                    
+                    Console.Write(_visual);
+                    break;
+
             }
             Console.ResetColor();
         }
