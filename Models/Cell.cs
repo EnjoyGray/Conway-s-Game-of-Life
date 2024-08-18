@@ -11,46 +11,7 @@
             _visual = visual;
         }
 
-        public abstract void Draw();
-    }
-
-
-    internal class CellLight : Cell
-    {
-        public CellLight() 
-            : base(1, "L")
-        {
-        
-        }
-
-
-        public override void Draw()
-        {
-            switch (_hp) 
-            {   case 0:
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(_visual);
-                    break;
-
-                case 1:
-                    Console.BackgroundColor = ConsoleColor.Green;
-                    Console.Write(_visual);
-                    break;
-            }
-            Console.ResetColor();
-        }
-
-    }
-
-    internal class CellMedium : Cell
-    {
-        public CellMedium()
-            : base(2, "M")
-        {
-
-        }
-        public override void Draw()
+        public virtual void Draw()
         {
             switch (_hp)
             {
@@ -68,37 +29,6 @@
                 case 2:
                     Console.BackgroundColor = ConsoleColor.Yellow;
                     Console.Write(_visual);
-                    break;
-            }
-            Console.ResetColor();
-        }
-    }
-
-    internal class CellHeavy : Cell
-    {
-        public CellHeavy()
-            : base(3, "H")
-        {
-
-        }
-        public override void Draw()
-        {
-            switch (_hp)
-            {
-                case 0:
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(_visual);                    
-                    break;
-
-                case 1:
-                    Console.BackgroundColor = ConsoleColor.Green;
-                    Console.Write(_visual);                    
-                    break;
-
-                case 2:
-                    Console.BackgroundColor = ConsoleColor.Yellow;
-                    Console.Write(_visual);                    
                     break;
 
                 case 3:
@@ -115,13 +45,40 @@
                     else if (_hp < 0)
                     {
                         Console.BackgroundColor = ConsoleColor.Black;
-                    }                    
+                    }
                     Console.Write(_visual);
                     break;
 
             }
             Console.ResetColor();
         }
+    }
+
+
+    internal class CellLight : Cell
+    {
+        public CellLight() 
+            : base(1, "L")
+        {        
+        }
+    }
+
+    internal class CellMedium : Cell
+    {
+        public CellMedium()
+            : base(2, "M")
+        {
+        }
+        
+    }
+
+    internal class CellHeavy : Cell
+    {
+        public CellHeavy()
+            : base(3, "H")
+        {
+        }
+       
 
     }    
 }

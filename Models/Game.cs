@@ -29,7 +29,7 @@ namespace Conway_s_Game_of_Life.Models
                 matrixField.DrawMatrix();
                 Console.ResetColor();
                 
-                Thread.Sleep(50);
+                Thread.Sleep(100);
                 Console.Clear();
             }
         }
