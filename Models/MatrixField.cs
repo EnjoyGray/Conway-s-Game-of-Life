@@ -1,6 +1,7 @@
 ﻿using Conway_s_Game_of_Life.Interfaces;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Diagnostics.Metrics;
+using Conway_s_Game_of_Life.Models;
 
 namespace Conway_s_Game_of_Life.Models
 {
@@ -10,8 +11,13 @@ namespace Conway_s_Game_of_Life.Models
         int x;
         int y;
         Cell[,] Matrix;              
-        Random random = new Random();       
+        Random random = new Random();
 
+        public int population;
+        public int pLight;
+        public int pMedium;
+        public int pHeavy;        
+        
         public MatrixField(int X, int Y)
         {
             x = X;
@@ -121,6 +127,7 @@ namespace Conway_s_Game_of_Life.Models
             }
             Matrix = updatedMatrix;
         }
+
         private int CountLiveNeighbors(int rowX, int columntY)
         {
             int liveCount = 0;
@@ -145,7 +152,43 @@ namespace Conway_s_Game_of_Life.Models
             }
             return liveCount;
         }
+
+        public void Population()
+        {
+            population = 0;
+            pLight = 0;
+            pMedium = 0;
+            pHeavy = 0;
+
+            for (int i = 0; i < y; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {
+                    if (Matrix[j, i]._hp > 0)
+                    {
+                        population++;
+
+                        if (Matrix[j, i] is CellLight)
+                        {
+                            pLight++;
+                        }
+                        else if (Matrix[j, i] is CellMedium)
+                        {
+                            pMedium++;
+                        }
+                        else if (Matrix[j, i] is CellHeavy)
+                        {
+                            pHeavy++;
+                        }
+                    }
+                }               
+            }
+
+            Console.WriteLine("Population: " + population);
+            Console.WriteLine("\tLight: " + pLight);
+            Console.WriteLine("\tMedium: " + pMedium);
+            Console.WriteLine("\tHeavy: " + pHeavy);
+        }
     }
 }
-
 

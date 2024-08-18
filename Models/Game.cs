@@ -23,12 +23,13 @@ namespace Conway_s_Game_of_Life.Models
             while (true)
             {
                 Console.WriteLine("Day: " + count++);
+                matrixField.Population();
 
                 matrixField.CheckNeighbors();
                 matrixField.DrawMatrix();
                 Console.ResetColor();
                 
-                Thread.Sleep(250);
+                Thread.Sleep(50);
                 Console.Clear();
             }
         }

@@ -12,8 +12,6 @@ namespace Conway_s_Game_of_Life
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-
             IGame game = new Game(40, 20);
             game.Run();
         }
