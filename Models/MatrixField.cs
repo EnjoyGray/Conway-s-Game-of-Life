@@ -58,6 +58,7 @@ namespace Conway_s_Game_of_Life.Models
                     }
                     else
                     {
+                        cell._hp = 1;
                         result = cell;                        
                     }
 
@@ -104,7 +105,21 @@ namespace Conway_s_Game_of_Life.Models
                     {
                         if (liveNeighbors == 3)
                         {
-                            updatedMatrix[j, i]._hp = 1;
+                            if (liveNeighbors == 3)
+                            {                                    
+                                if (Matrix[j, i] is CellLight)
+                                {
+                                    updatedMatrix[j, i] = new CellLight();
+                                }
+                                else if (Matrix[j, i] is CellMedium)
+                                {
+                                    updatedMatrix[j, i] = new CellMedium();
+                                }
+                                else if (Matrix[j, i] is CellHeavy)
+                                {
+                                    updatedMatrix[j, i] = new CellHeavy();
+                                }
+                            }
                         }
                     }
                 }
@@ -115,6 +130,7 @@ namespace Conway_s_Game_of_Life.Models
         private int CountLiveNeighbors(int rowX, int columntY)
         {
             int liveCount = 0;
+
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)

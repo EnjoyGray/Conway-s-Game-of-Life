@@ -29,6 +29,7 @@
             switch (_hp) 
             {   case 0:
                     Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write(_visual);
                     break;
 
@@ -55,6 +56,7 @@
             {
                 case 0:
                     Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write(_visual);
                     break;
 
@@ -84,7 +86,8 @@
             switch (_hp)
             {
                 case 0:
-                    Console.BackgroundColor = ConsoleColor.Black;                    
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write(_visual);
                     
                     break;
