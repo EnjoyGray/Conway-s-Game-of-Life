@@ -19,4 +19,5 @@ In this project, you can customize the size of the grid where cells appear rando
 2. **Random Initialization:** After choosing the size, cells are randomly placed on the grid.
 3. **Evolution:** After each simulation step, cells change their state (alive or dead) based on the specified rules.
 
-![image](https://github.com/user-attachments/assets/c300ab9d-2476-4ffa-b4b8-167beaefd0ea)
+
+![image](https://github.com/user-attachments/assets/05cab5b7-cc21-46af-8a05-9c8f447ea98d)
